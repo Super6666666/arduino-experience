@@ -1,5 +1,5 @@
 # arduino-experience
-it can help you to learn arduino 
+turn on your LED
 const int ledPin = 2;//定义LED正极接Arduino的2号引脚
 void setup () {
 pinMode (ledPin，OUTPUT);//将单片机的2号引脚设置为输出模式oUTPUT}
