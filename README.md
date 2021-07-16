@@ -1,22 +1,20 @@
 # arduino-experience
-Control of steering gear
-#include <Servo.h>
+Use a potentiometer to control the steering gear
+#include <Servo.h>//导入arduino函数库
 
-Servo myservo;  // 定义Servo对象来控制
-int pos = 0;    // 角度存储变量
+Servo myservo1;//设定舵机
+int val1;//设定变量
 
-void setup() {
-  myservo.attach(9);  // 控制线连接数字9
+void setup()
+{
+  myservo1.attach(9);//舵机连9端口（你连的是几端口就attach几）
 }
 
-void loop() {
-  for (pos = 0; pos <= 180; pos ++) { // 0°到180°
-    // in steps of 1 degree
-    myservo.write(pos);              // 舵机角度写入
-    delay(3);                       // 等待转动到指定角度
-  }
-  for (pos = 180; pos >= 0; pos --) { // 从180°到0°
-    myservo.write(pos);              // 舵机角度写入
-    delay(3);                       // 等待转动到指定角度
-  }
+void loop()
+{
+  val1=analogRead(A0);//电位器连的端口赋值给变量
+  val1=map(val1,0,1023,0,180);//map函数映射，模拟取值范围，把电位器区间映射到角度
+  myservo1.write(val1);//舵机依靠变量旋转相应角度
+
+  delay(5);//延时
 }
